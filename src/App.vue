@@ -1,27 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <main class="w-screen h-screen bg-gray-200">
+    <Header
+      @save="saveHandler"
+      @clear="clearHandler"
+      @undo="undoHandler"
+      @redo="redoHandler"
+    />
+    <Canvas />
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from "vue";
+
+// Components
+import Header from "./components/Header.vue";
+import Canvas from "./components/Canvas.vue";
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-})
+  name: "App",
+  components: { Header, Canvas },
+  methods: {
+    saveHandler(): void {
+      console.log("saveHandler");
+    },
+    clearHandler(): void {
+      console.log("clearHandler");
+    },
+    undoHandler(): void {
+      console.log("undoHandler");
+    },
+    redoHandler(): void {
+      console.log("redoHandler");
+    },
+  },
+});
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+:root  {
+  --primary-light: '#9BFFCD',
+  --primary: '#00CC99'
+  --primary-dark: '#01936F'
+  --gray: '#E8E8E8'
+  --white: '#FFFFFF',
+  --black: '#000000'
 }
 </style>
